@@ -29,9 +29,10 @@ class Photos(models.Model):
     image = models.ImageField(upload_to = 'photos/',null=True)
     name = models.CharField(max_length =40)
     descri = models.TextField(max_length =6000)
+    pub_date = models.DateTimeField(auto_now_add=True)
     cate = models.ForeignKey(Category)
-    loca = models.ForeignKey(Location)
-    pub_date = models.DateTimeField(auto_now_add=True) 
+    loca = models.ManyToManyField(Location)
+     
     
     def save_pic(self):
         self.save()

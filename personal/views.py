@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Photos,Category,Location
 
-def page(request):
+def welcome(request):
     imaje = Photos.objects.all()
     return render(request, 'all-photos/index.html',{"imaje":imaje,})
 
@@ -20,9 +20,9 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'all-photos/search.html',{"message":message})
 
-def photo(request,photo_id):
-    try:
-        photo = photo.objects.get(id = photo_id)
-    except DoesNotExist:
-        raise Http404()
-    return render(request,"all-photos/personal.html", {"photo":photo})
+# def photo(request,photo_id):
+#     try:
+#         photo = photo.objects.get(id = photo_id)
+#     except DoesNotExist:
+#         raise Http404()
+#     return render(request,"all-photos/personal.html", {"photo":photo})
