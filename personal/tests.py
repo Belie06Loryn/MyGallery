@@ -1,6 +1,6 @@
 from django.test import TestCase
 from .models import Location,Photos,Category
- import datetime as dt
+import datetime as dt
  
 class LocationTestClass(TestCase):
 
@@ -16,13 +16,18 @@ class LocationTestClass(TestCase):
     def test_save_method(self):
         self.ahantu.save_loca()
         locations = Location.objects.all()
-        self.assertTrue(len(locations) > 0)   
+        self.assertTrue(len(locations.location) > 0) 
+
+    def test_dele(self):
+        self.ahantu.save_loca()
+        locate = Location.objects.filter(location=ahantu).dele_loca()
+        self.assertEqual(len(locate.location),1)       
 
 class CategoryTestClass(TestCase):
 
     # Set up method
     def setUp(self):
-        self.categ= Category(category = 'Fun')
+        self.categ= Category(cate = 'Fun')
 
     # Testing  instance
     def test_instance(self):
