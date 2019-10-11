@@ -1,29 +1,4 @@
-
-
-
-
 {% extends 'all-photos/base.html' %}
+{% block content %}
 
- {% block content %}
- 
-
- <div class="container">
-    {% for photos in imaje %}
-    <div class="row">
-      <img src="{{photos.image.url}}"  class="img-responsive" alt="">
-    </div>
-
-    <div class="row">
-        <h3 class="text-center">{{photos.name}}</h3>
-    </div>
-
-    <div>
-      <p>{{photos.descri}}</p>
-      <p>Posted at {{photos.pub_date|timesince}}</p>
-      <p>Location {{photos.loca}}</p>
-      <p>Category {{photos.cate}}</p>
-    </div> 
-    {% endfor %}
- </div>
-
- {% endblock %}
+  

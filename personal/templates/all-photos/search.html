@@ -11,15 +11,38 @@
 
   </div>
 
-  <div class="row">
-
-  {% if category %}
+<div class="container">
+    {% if category %}
     {% for cate in category %}
+    <div class="row">
       <div class="col-sm-6 col-md-3">
-        <img src="{{cate.image.url}}"  class="img-responsive" alt="">
-      </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="modal fade" id="{{cate.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                        <img src="{{cate.image.url}}"  class="img-responsive" alt="">
+                        <h3 class="text-center">{{cate.name}}</h3>
+                        <p>{{cate.descri}}</p>
+                        <p>Posted at {{cate.pub_date|timesince}}</p>
+                        <p>Location {{cate.loca}}</p>
+                        <p>Category {{cate.cate}}</p>
+                    <div class="modal-footer justify-content-center">
+                    <a type="button" class="btn-floating btn-sm btn-fb"><i class="fab fa-facebook-f"></i></a>
+                    <a type="button" class="btn-floating btn-sm btn-tw"><i class="fab fa-twitter"></i></a>
+                    <a type="button" class="btn-floating btn-sm btn-gplus"><i class="fab fa-google-plus-g"></i></a>
+                    <a type="button" class="btn-floating btn-sm btn-ins"><i class="fab fa-linkedin-in"></i></a>
+                    <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <a><img class="img-responsive" src="{{cate.image.url}}" id="image"
+                data-toggle="modal" data-target="#{{cate.id}}"></a>
+        </div>
+    </div>
     {% endfor %}
-  {% endif %}
-  </div>
+    {% endif %}
 </div>
-{% endblock %}
+  
+{% endblock %} 
