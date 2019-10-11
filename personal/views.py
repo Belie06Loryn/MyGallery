@@ -30,3 +30,13 @@ def locator(request):
     else:
         message = "No selection made"
         return render(request,'all-photos/personal.html',{"message":message})
+
+
+def image(request,id):
+    try:
+        single= Photos.objects.get(id = id)
+    except DoesNotExist:
+        raise Http404()
+    namu=f'{single.name}'
+    
+    return render(request,"all-photos/pick-posts.html", {"namu":namu,"photos":single})

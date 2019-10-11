@@ -46,6 +46,12 @@ class Photos(models.Model):
         self.delete() 
 
     @classmethod
+    def image_by_id(cls,id):
+        found = cls.objects.filter(pk = id)
+        return found
+    
+
+    @classmethod
     def filter_loca(cls,location):
         imaje = cls.objects.filter(location__location__icontains=location)
         return imaje
