@@ -4,7 +4,8 @@ from .models import Photos,Category,Location
 
 def page(request):
     imaje = Photos.objects.all()
-    return render(request, 'all-photos/index.html',{"imaje":imaje,})
+    print(imaje)
+    return render(request, 'all-photos/index.html',{"imaje":imaje})
 
 
 def search_results(request):

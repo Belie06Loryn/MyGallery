@@ -31,7 +31,7 @@ class Photos(models.Model):
     descri = models.TextField(max_length =6000)
     pub_date = models.DateTimeField(auto_now_add=True)
     cate = models.ForeignKey(Category)
-    loca = models.ManyToManyField(Location)
+    loca = models.ForeignKey(Location ,null=True)
      
     
     def save_pic(self):
