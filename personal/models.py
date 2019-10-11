@@ -38,8 +38,8 @@ class Photos(models.Model):
         self.save()
                       
     @classmethod
-    def search_by_cate(cls,search_term):
-        categories = cls.objects.filter(category__icontains=search_term)
+    def search_by_cate(cls,search):
+        categories = cls.objects.filter(cate__cate__icontains=search)
         return categories  
 
     def dele_pic(self):

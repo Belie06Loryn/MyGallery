@@ -3,10 +3,10 @@
 <div class="container">
 
   <div class="row">
-    {% if category%}
+    {% if category %}
       <h2> {{ category|length }}  {{backend}}</h2>
     {% else %}
-      <h2> Not Found {{backend}}</h2>
+      <h2> {{backend}}</h2>
     {% endif %}
 
   </div>
@@ -16,7 +16,7 @@
   {% if category %}
     {% for cate in category %}
       <div class="col-sm-6 col-md-3">
-          <h1>{{cate.title}}</h1>
+        <img src="{{cate.image.url}}"  class="img-responsive" alt="">
       </div>
     {% endfor %}
   {% endif %}

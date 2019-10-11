@@ -4,26 +4,20 @@ from .models import Photos,Category,Location
 
 def page(request):
     imaje = Photos.objects.all()
-    print(imaje)
     return render(request, 'all-photos/index.html',{"imaje":imaje})
 
 
 def search_results(request):
-    if 'category' in request.GET and request.GET['category']:
-        search_term = request.GET.get("category")
-        searched_categories = Photos.search_by_category(search_term)
+    if 'cate' in request.GET and request.GET['cate']:
+        search = request.GET.get("cate")
+        searched = Photos.search_by_cate(search)
         
-        backend = f"{search_term}"
+        backend = f"{search}"
         
-        return render(request, 'all-photos/search.html',{"backend":backend,"categories":searched_categories})
+        return render(request, 'all-photos/search.html',{"backend":backend,"category":searched})
     
     else:
         backend = "You haven't searched for any term"
         return render(request, 'all-photos/search.html',{"backend":backend})
 
-def photos(request,photos_id):
-    try:
-        photos = Photos.objects.get(id = photos_id)
-    except DoesNotExist:
-        raise Http404()
-    return render(request,"all-photos/index.html", {"photo":photo})
+
