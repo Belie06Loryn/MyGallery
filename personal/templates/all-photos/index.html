@@ -18,7 +18,7 @@
             <a type="button" class="btn-floating btn-sm btn-tw"><i class="fab fa-twitter"></i></a>
             <a type="button" class="btn-floating btn-sm btn-gplus"><i class="fab fa-google-plus-g"></i></a>
             <a type="button" class="btn-floating btn-sm btn-ins"><i class="fab fa-linkedin-in"></i></a>
-            <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal" href="{% url 'image' %}">View The Picture</button>
+            <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal" href="">View The Picture</button>
             <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -26,8 +26,23 @@
     </div>
     <a><img class="img-responsive" src="{{photos.image.url}}" id="image"
         data-toggle="modal" data-target="#{{photos.id}}"></a>
+    <button class="btn btn-default" style="text-align:center;" onclick="copy()" data-toggle="modal"
+    data-target="#Modal">Copy Link</button>
+    <input type="text" value="127.0.0.1:8000/media/photos/{{photos.image.url}}" id="link" hidden>
   </div>
+  <div class="modal fade" id="Modal" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notify modal-success" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="text-center">
+                    <i class="fas fa-check fa-4x mb-3 animated rotateIn" data-delay="1s" style="color:rgb(241, 106, 196)"></i>
+                    <p class="text-muted">Link Successfully Copied</p>
+                  </div>
+                  <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
 {% endfor %}
 </div>
-
 {% endblock %}
