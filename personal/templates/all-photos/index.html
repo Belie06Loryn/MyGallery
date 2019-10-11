@@ -4,7 +4,7 @@
 {% for photos in imaje %}
 <div class="row">
   <div class="col-lg-4 col-md-6 mb-4">
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="{{photos.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
                 <img src="{{photos.image.url}}"  class="img-responsive" alt="">
@@ -24,7 +24,7 @@
       </div>
     </div>
     <a><img class="img-responsive" src="{{photos.image.url}}" id="image"
-        data-toggle="modal" data-target="#myModal"></a>
+        data-toggle="modal" data-target="#{{photos.id}}"></a>
   </div>
 {% endfor %}
 </div>
