@@ -1,24 +1,32 @@
 {% extends 'all-photos/base.html' %}
-
- {% block content %}
-
+{% block content %}
  <div class="container">
-    {% for photos in imaje %}
-    <div class="row">
-      <img src="{{photos.image.url}}"  class="img-responsive" alt="">
+{% for photos in imaje %}
+<div class="row">
+  <div class="col-lg-4 col-md-6 mb-4">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+                <img src="{{photos.image.url}}"  class="img-responsive" alt="">
+                <h3 class="text-center">{{photos.name}}</h3>
+                <p>{{photos.descri}}</p>
+                <p>Posted at {{photos.pub_date|timesince}}</p>
+                <p>Location {{photos.loca}}</p>
+                <p>Category {{photos.cate}}</p>
+          <div class="modal-footer justify-content-center">
+            <a type="button" class="btn-floating btn-sm btn-fb"><i class="fab fa-facebook-f"></i></a>
+            <a type="button" class="btn-floating btn-sm btn-tw"><i class="fab fa-twitter"></i></a>
+            <a type="button" class="btn-floating btn-sm btn-gplus"><i class="fab fa-google-plus-g"></i></a>
+            <a type="button" class="btn-floating btn-sm btn-ins"><i class="fab fa-linkedin-in"></i></a>
+            <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
+    <a><img class="img-responsive" src="{{photos.image.url}}" id="image"
+        data-toggle="modal" data-target="#myModal"></a>
+  </div>
+{% endfor %}
+</div>
 
-    <div class="row">
-        <h3 class="text-center">{{photos.name}}</h3>
-    </div>
-
-    <div>
-      <p>{{photos.descri}}</p>
-      <p>Posted at {{photos.pub_date|timesince}}</p>
-      <p>Location {{photos.loca}}</p>
-      <p>Category {{photos.cate}}</p>
-    </div> 
-    {% endfor %}
- </div>
-
- {% endblock %}
+{% endblock %}
