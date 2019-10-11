@@ -13,13 +13,13 @@ def search_results(request):
         search_term = request.GET.get("category")
         searched_categories = Photos.search_by_category(search_term)
         
-        message = f"{search_term}"
+        backend = f"{search_term}"
         
-        return render(request, 'all-photos/search.html',{"message":message,"categories":searched_categories})
+        return render(request, 'all-photos/search.html',{"backend":backend,"categories":searched_categories})
     
     else:
-        message = "You haven't searched for any term"
-        return render(request, 'all-photos/search.html',{"message":message})
+        backend = "You haven't searched for any term"
+        return render(request, 'all-photos/search.html',{"backend":backend})
 
 def photos(request,photos_id):
     try:

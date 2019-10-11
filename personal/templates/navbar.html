@@ -70,10 +70,10 @@ input[type=text] {
 <body>
 
 <div class="navbar">
-  <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
+  <a class="active" href="{%url 'page'%}"><i class="fa fa-fw fa-home"></i> Home</a> 
   <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
 <div class="search-container" style="float:right;">
-    <form action="/action_page.php">
+    <form class="navbar-form" role="search" action="{% url 'search_results' %}">
       <input type="text" placeholder="Search.." name="search"><button type="submit"><i class="fa fa-search"></i></button>
       
     </form>
