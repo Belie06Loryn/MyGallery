@@ -7,24 +7,24 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .navbar {
   width: 100%;
-  background-color: #555;
+  background-color: rgb(25, 102, 76);
   overflow: auto;
 }
 
 .navbar a {
   float: left;
   padding: 12px;
-  color: white;
+  color: rgb(10, 10, 10);
   text-decoration: none;
   font-size: 17px;
 }
 
 .navbar a:hover {
-  background-color: #000;
+  background-color: rgb(37, 51, 43);
 }
 
 .active {
-  background-color: #4CAF50;
+  background-color: rgb(142, 245, 189);
 }
 
 @media screen and (max-width: 500px) {
@@ -71,7 +71,6 @@ input[type=text] {
 
 <div class="navbar">
   <a class="active" href="{%url 'page'%}"><i class="fa fa-fw fa-home"></i> Home</a> 
-  <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
 <div class="search-container" style="float:right;">
     <form class="navbar-form" role="search" action="{% url 'search_results' %}">
       <input type="text" placeholder="Search.." name="cate"><button type="submit"><i class="fa fa-search"></i></button>

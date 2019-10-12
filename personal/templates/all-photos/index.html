@@ -10,25 +10,17 @@
     document.execCommand("copy");
   }
 </script>
-<div class="container">
-  <form action="{% url 'locator' %}" class="form-style">
-      <div class="form-group col-md-4">
-          <label for="locationFilter">Location filter</label>
-          <select id="locationFilter" class="form-control" name="locations">
-            {% for loca in locate %}
-            <option>{{ loca.loca }}</option>
-            {% endfor %}
-          </select><br>
-          <button btn="btn" type="submit">Filter</button>
-      </div>
-    </form>
-{% for photos in imaje %}
+<div class="container" style="background-color:rgba(14, 255, 175, 0.2);"><br><br>
+<h1 style="font-family: 'Mansalva', cursive;text-align: center;color: rgb(1, 122, 92);">Gallery Hosts</h1>
+<br>
 <div class="row">
+  {% for photos in imaje %}
   <div class="col-md-4">
     <div class="modal fade" id="{{photos.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-dialog modal-lg" role="
+      document">
         <div class="modal-content">
-                <img src="{{photos.image.url}}"  class="img-responsive" alt="">
+                <img src="{{photos.image.url}}"  class="img-responsive" style="width: 250px;height:250px;">
                 <h3 class="text-center">{{photos.name}}</h3>
                 <p>{{photos.descri}}</p>
                 <p>Posted at {{photos.pub_date|timesince}}</p>
@@ -46,7 +38,7 @@
       </div>
     </div>
     <a><img class="img-responsive" src="{{photos.image.url}}" id="image"
-        data-toggle="modal" data-target="#{{photos.id}}"></a>
+        data-toggle="modal" data-target="#{{photos.id}}" style="width: 250px;height:250px;"></a>
     <button class="btn btn-default" style="text-align:center;" onclick="copylk(link)" data-toggle="modal"
     data-target="#Modal">Copy Link</button>
     <input type="text" value="127.0.0.1:8000{{photos.image.url}}" id="link" >
@@ -64,6 +56,15 @@
                 </div>
               </div>
             </div>
-{% endfor %}
+
+  </div>
+  {% endfor %}
+</div>
+</div><br><br><br><br><br>
+<div>
+    <footer>
+        <hr class="hr">
+        <p>@2019 by ____ProDevloper.Proudly Created</p>
+    </footer>
 </div>
 {% endblock %}
