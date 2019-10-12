@@ -20,16 +20,17 @@ def search_results(request):
         backend = "You haven't searched for any term"
         return render(request, 'all-photos/search.html',{"backend":backend})
 
-def locator(request):
+def locators(request):
     if 'locations' in request.GET and request.GET['locations']:
         location = request.GET.get('locations')
         found = Photos.filter_loca(location)
         message = f'{location}'
-       
-        return render(request,'all-photos/personal.html',{"message":message,"location":found})
+        locate = Location.objects.all()
+        return render(request,'all-photos/personal.html',{"message":message,"location":found,"locate":locate})
     else:
+        locate = Location.objects.all()
         message = "No selection made"
-        return render(request,'all-photos/personal.html',{"message":message})
+        return render(request,'all-photos/personal.html',{"message":message,"locate":locate})
 
 
 def image(request,id):

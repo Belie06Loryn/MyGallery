@@ -1,9 +1,30 @@
 {% extends 'all-photos/base.html' %}
 {% block content %}
- <div class="container">
+<!-- Hint from W3schools -->
+<script>
+  function copylk() {
+    var Text = document.getElementById("link");
+    Text.select();
+    console.log(Text);
+    Text.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+  }
+</script>
+<div class="container">
+  <form action="{% url 'locator' %}" class="form-style">
+      <div class="form-group col-md-4">
+          <label for="locationFilter">Location filter</label>
+          <select id="locationFilter" class="form-control" name="locations">
+            {% for loca in locate %}
+            <option>{{ loca.loca }}</option>
+            {% endfor %}
+          </select><br>
+          <button btn="btn" type="submit">Filter</button>
+      </div>
+    </form>
 {% for photos in imaje %}
 <div class="row">
-  <div class="col-lg-4 col-md-6 mb-4">
+  <div class="col-md-4">
     <div class="modal fade" id="{{photos.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -26,9 +47,9 @@
     </div>
     <a><img class="img-responsive" src="{{photos.image.url}}" id="image"
         data-toggle="modal" data-target="#{{photos.id}}"></a>
-    <button class="btn btn-default" style="text-align:center;" onclick="copy()" data-toggle="modal"
+    <button class="btn btn-default" style="text-align:center;" onclick="copylk(link)" data-toggle="modal"
     data-target="#Modal">Copy Link</button>
-    <input type="text" value="127.0.0.1:8000{{photos.image.url}}" id="link" hidden>
+    <input type="text" value="127.0.0.1:8000{{photos.image.url}}" id="link" >
   </div>
   <div class="modal fade" id="Modal" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="true">
@@ -45,13 +66,4 @@
             </div>
 {% endfor %}
 </div>
-<!-- Hint from W3schools -->
-<script>
-  function copy() {
-    var copyText = document.getElementById("link");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");
-  }
-</script>
 {% endblock %}
