@@ -10,22 +10,40 @@
     document.execCommand("copy");
   }
 </script>
+<style>
+  .hr{ 
+    display: block;
+    margin-left:200px;
+    margin-right: 200px;
+    border-style: inset;
+    border-width: 1px;
+  } 
+  footer {
+    /* position: fixed; */
+    background-color:transparent;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color:rgb(8, 8, 8);
+    text-align: center;
+    font-size: 10px;
+  }
+</style>
 <div class="container" style="background-color:rgba(14, 255, 175, 0.2);"><br><br>
 <h1 style="font-family: 'Mansalva', cursive;text-align: center;color: rgb(1, 122, 92);">Gallery Hosts</h1>
 <br>
 <div class="row">
   {% for photos in imaje %}
   <div class="col-md-4">
-    <div class="modal fade" id="{{photos.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="
-      document">
+    <div class="modal fade" id="{{photos.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 450px;height:770px; justify-items: center;">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-                <img src="{{photos.image.url}}"  class="img-responsive" style="width: 250px;height:250px;">
-                <h3 class="text-center">{{photos.name}}</h3>
-                <p>{{photos.descri}}</p>
-                <p>Posted at {{photos.pub_date|timesince}}</p>
-                <p>Location {{photos.loca}}</p>
-                <p>Category {{photos.cate}}</p>
+                <img src="{{photos.image.url}}"  class="img-responsive" style="width: 433px;height:300px;">
+                <h3 class="text-center" >{{photos.name}}</h3>
+                <p style="margin: 10px;">{{photos.descri}}</p>
+                <p style="margin: 10px;">Posted at {{photos.pub_date|timesince}}</p>
+                <p style="margin: 10px;">Location {{photos.loca}}</p>
+                <p style="margin: 10px;">Category {{photos.cate}}</p>
           <div class="modal-footer justify-content-center">
             <a type="button" class="btn-floating btn-sm btn-fb"><i class="fab fa-facebook-f"></i></a>
             <a type="button" class="btn-floating btn-sm btn-tw"><i class="fab fa-twitter"></i></a>
