@@ -53,7 +53,7 @@ class Photos(models.Model):
 
     @classmethod
     def filter_loca(cls,location):
-        imaje = cls.objects.filter(location__location__icontains=location)
+        imaje = cls.objects.filter(loca__location__icontains=location)
         return imaje
 
     @classmethod

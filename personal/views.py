@@ -4,7 +4,8 @@ from .models import Photos,Category,Location
 
 def page(request):
     imaje = Photos.objects.all()
-    return render(request, 'all-photos/index.html',{"imaje":imaje})
+    locating = Location.objects.all()
+    return render(request, 'all-photos/index.html',{"imaje":imaje,"locating":locating})
 
 
 def search_results(request):
@@ -20,9 +21,13 @@ def search_results(request):
         backend = "You haven't searched for any term"
         return render(request, 'all-photos/search.html',{"backend":backend})
 
-def locators(request,id,loca_id):
-        laco = Photos.filter_loca(id=loca_id)
-        return render(request,'all-photos/personal.html',{"location":found,"locate":locate,"laco":laco})
+def location(request,id,loca_id):
+     if 'location' in request.GET and request.GET['location']:
+        filters = request.GET.get('location')
+        found = Photos.filter_by_loca(filters)
+        message = f'{filters}'
+        locations = Location.objects.all()
+        return render(request,'all-photos/personal.html',{"message":message,"found":found,"locations":locations})
     
 
 def image_id(request,id):

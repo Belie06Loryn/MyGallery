@@ -36,6 +36,19 @@
 <div class="container" style="background-color:rgba(14, 255, 175, 0.2);"><br><br>
 <h1 style="font-family: 'Mansalva', cursive;text-align: center;color: rgb(1, 122, 92);">Gallery Hosts</h1>
 <br>
+<div class="container">
+  <form action="{% url 'location' %}" class="form-style">
+      <div class="form-group col-md-4">
+          <label for="locationFilter">Location filter</label>
+          <select id="locationFilter" class="form-control" name="location">
+              {% for location in locating %}
+              <option>{{ location.location }}</option>
+              {% endfor %}
+          </select><br>
+          <button btn="btn" class="btn btn-default" type="submit">Filter</button>
+      </div>
+  </form>
+</div>
 <div class="row">
   {% for photos in imaje %}
   <div class="col-md-4">
