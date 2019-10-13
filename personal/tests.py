@@ -43,6 +43,12 @@ class CategoryTestClass(TestCase):
         categories = Category.objects.all()
         self.assertTrue(len(categories) >= 1)  
 
+    def test_upd_cate(self):
+        cate = Category.objects.filter(id=1)
+        cate.update(cate ='Art')
+        search = Category.objects.filter(id=1)
+        self.assertNotEqual(search,'Art') 
+
     def test_del_cate(self):
         self.categ.save_cate()
         categories = self.categ.dele_cate()
