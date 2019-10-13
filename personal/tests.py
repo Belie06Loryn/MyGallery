@@ -90,4 +90,24 @@ class PhotosTestClass(TestCase):
         search = Photos.objects.filter(id=1)
         self.assertNotEqual(search,'lez.jpeg')     
         
-      
+    def test_pic_id(self):
+        self.image = Photos(image = 'Jam.jpeg', name ='Muriuki', descri ='jamesmoringaschoolcom',loca = self.ahantu, cate=self.new_cate,pub_date = '2019-09-29')
+        self.image.save_pic()
+        search = Photos.image_by_id(self.image.id)
+        self.assertNotEqual(search,self.image)    
+ 
+    def test_search_by_cate(self):
+        self.category = Category(cate = 'Fun')
+        self.category.save_cate()
+        self.image = Photos(image = 'Jam.jpeg', name ='Muriuki', descri ='jamesmoringaschoolcom',loca = self.ahantu, cate=self.new_cate,pub_date = '2019-09-29')
+        self.image.save_pic()
+        search = Photos.search_by_cate('Fun')
+        self.assertNotEqual(search,self.image)
+
+    def test_search_loca(self):
+        self.location = Location(location='Rwanda')
+        self.location.save_loca()
+        self.image = Photos(image = 'Jam.jpeg', name ='Muriuki', descri ='jamesmoringaschoolcom',loca = self.ahantu, cate=self.new_cate,pub_date = '2019-09-29')
+        self.image.save_pic()
+        search = Photos.filter_loca('Rwanda')
+        self.assertNotEqual(search,self.image)    
