@@ -24,13 +24,11 @@
     function copylk() {
         var Text = document.getElementById("link");
         Text.select();
-        console.log(Text);
-        Text.setSelectionRange(0, 99999)
         document.execCommand("copy");
     }
     </script>
 <div class="container" style="background-color:rgba(14, 255, 175, 0.2);"><br><br> 
-    <h1 style="font-family: 'Mansalva', cursive;text-align: center;color: rgb(1, 122, 92);">Selected Location</h1<br><br>  
+    <h1 style="font-family: 'Mansalva', cursive;text-align: center;color: rgb(1, 122, 92);">Selected Location</h1><br><br>  
     <div class="row">
         {% if found %}
         {% for loca in found %}
@@ -59,8 +57,9 @@
                 data-toggle="modal" data-target="#{{loca.id}}" style="width: 250px;height:250px;"></a>
             <button class="btn btn-default" style="text-align:center;" onclick="copylk(link)" data-toggle="modal"
             data-target="#Modal">Copy Link</button>
-            <input type="text" value="127.0.0.1:8000{{photos.image.url}}" id="link" >
-            </div>
+            <input type="text" value="127.0.0.1:8000{{loca.image.url}}" id="link" >
+            <hr>
+        </div>
             <div class="modal fade" id="Modal" tabindex="-1" role="dialog"
                 aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-notify modal-success" role="document">
@@ -74,12 +73,11 @@
                     </div>
                   </div>
                 </div>
-      </div>
-        </div>
+            </div>
         {% endfor %}
 
         {% endif %}
-</div>
+</div></div>
 <br><br><br><br><br>
 <div>
     <footer>
