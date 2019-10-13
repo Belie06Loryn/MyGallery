@@ -21,10 +21,10 @@ def search_results(request):
         backend = "You haven't searched for any term"
         return render(request, 'all-photos/search.html',{"backend":backend})
 
-def location(request,id,loca_id):
+def location(request):
      if 'location' in request.GET and request.GET['location']:
         filters = request.GET.get('location')
-        found = Photos.filter_by_loca(filters)
+        found = Photos.filter_loca(filters)
         message = f'{filters}'
         locations = Location.objects.all()
         return render(request,'all-photos/personal.html',{"message":message,"found":found,"locations":locations})

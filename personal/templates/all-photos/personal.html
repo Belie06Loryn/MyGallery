@@ -1,48 +1,62 @@
-{% extends 'base.html' %}
+{% extends 'all-photos/base.html' %}
 
 {% block content %}
-
-<div class="container">
-        <form action="{% url 'location' %}" class="form-style">
-            <div class="form-group col-md-4">
-                <label for="locationFilter">Location filter</label>
-                <select id="locationFilter" class="form-control" name="location">
-                    {% for location in locations %}
-                    <option>{{ location.location }}</option>
-                    {% endfor %}
-                </select><br>
-                <button btn="btn" type="submit">Filter</button>
-            </div>
-        </form>
-    </div>
-<div class="container">   
+<style>
+.hr{ 
+    display: block;
+    margin-left:200px;
+    margin-right: 200px;
+    border-style: inset;
+    border-width: 1px;
+    } 
+    footer {
+    /* position: fixed; */
+    background-color:transparent;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color:rgb(8, 8, 8);
+    text-align: center;
+    font-size: 10px;
+    }
+</style>
+<script>
+    function copylk() {
+        var Text = document.getElementById("link");
+        Text.select();
+        console.log(Text);
+        Text.setSelectionRange(0, 99999)
+        document.execCommand("copy");
+    }
+    </script>
+<div class="container" style="background-color:rgba(14, 255, 175, 0.2);"><br><br> 
+    <h1 style="font-family: 'Mansalva', cursive;text-align: center;color: rgb(1, 122, 92);">Selected Location</h1<br><br>  
     <div class="row">
         {% if found %}
-
-        {% for cate in found %}
+        {% for loca in found %}
         <div class="col-md-4">
-            <div class="modal fade" id="{{cate.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 450px;height:770px; justify-items: center;">
+            <div class="modal fade" id="{{loca.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 450px;height:770px; justify-items: center;">
               <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
-                <img src="{{cate.image.url}}"  class="img-responsive" style="width: 433px;height:300px;">
-                <h3 class="text-center">{{cate.name}}</h3>
-                <p style="margin: 10px;">{{cate.descri}}</p>
-                <p style="margin: 10px;">Posted at {{cate.pub_date|timesince}}</p>
-                <p style="margin: 10px;">Location {{cate.loca}}</p>
-                <p style="margin: 10px;">Category {{cate.cate}}</p>
+                <img src="{{loca.image.url}}"  class="img-responsive" style="width: 433px;height:300px;">
+                <h3 class="text-center">{{loca.name}}</h3>
+                <p style="margin: 10px;">{{loca.descri}}</p>
+                <p style="margin: 10px;">Posted at {{loca.pub_date|timesince}}</p>
+                <p style="margin: 10px;">Location {{loca.loca}}</p>
+                <p style="margin: 10px;">Category {{loca.cate}}</p>
                 <div class="modal-footer justify-content-center">
                 <a type="button" class="btn-floating btn-sm btn-fb"><i class="fa fa-fw fa-facebook"></i></a>
                 <a type="button" class="btn-floating btn-sm btn-tw"><i class="fa fa-fw fa-twitter"></i></a>
                 <a type="button" class="btn-floating btn-sm btn-gplus"><i class="fa fa-fw fa-google-plus"></i></a>
                 <a type="button" class="btn-floating btn-sm btn-ins"><i class="fa fa-fw fa-linkedin"></i></a>
-                <a href="{{photos.image.url}}" target="_blank"><button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4">View The Picture</button></a>
+                <a href="{{loca.image.url}}" target="_blank"><button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4">View The Picture</button></a>
                 <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
                 </div>
               </div>
               </div>
             </div>
-            <a><img class="img-responsive" src="{{cate.image.url}}" id="image"
-                data-toggle="modal" data-target="#{{cate.id}}" style="width: 250px;height:250px;"></a>
+            <a><img class="img-responsive" src="{{loca.image.url}}" id="image"
+                data-toggle="modal" data-target="#{{loca.id}}" style="width: 250px;height:250px;"></a>
             <button class="btn btn-default" style="text-align:center;" onclick="copylk(link)" data-toggle="modal"
             data-target="#Modal">Copy Link</button>
             <input type="text" value="127.0.0.1:8000{{photos.image.url}}" id="link" >
@@ -66,5 +80,11 @@
 
         {% endif %}
 </div>
-
+<br><br><br><br><br>
+<div>
+    <footer>
+        <hr class="hr">
+        <p>@2019 by ____ProDevloper.Proudly Created</p>
+    </footer>
+</div>
 {% endblock %}

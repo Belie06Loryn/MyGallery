@@ -29,6 +29,7 @@
     }
   </script>
 <div class="container" style="background-color:rgba(14, 255, 175, 0.2);"><br>
+  <h1 style="font-family: 'Mansalva', cursive;text-align: center;color: rgb(1, 122, 92);">Searched Category</h1><br><br>
     {% if category %}
       <h2> {{ category|length }}  {{backend}}</h2>
     {% else %}
@@ -52,7 +53,7 @@
             <a type="button" class="btn-floating btn-sm btn-tw"><i class="fa fa-fw fa-twitter"></i></a>
             <a type="button" class="btn-floating btn-sm btn-gplus"><i class="fa fa-fw fa-google-plus"></i></a>
             <a type="button" class="btn-floating btn-sm btn-ins"><i class="fa fa-fw fa-linkedin"></i></a>
-            <a href="{{photos.image.url}}" target="_blank"><button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4">View The Picture</button></a>
+            <a href="{{cate.image.url}}" target="_blank"><button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4">View The Picture</button></a>
             <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
             </div>
           </div>
