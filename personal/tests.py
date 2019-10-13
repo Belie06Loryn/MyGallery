@@ -20,6 +20,12 @@ class LocationTestClass(TestCase):
         locations= Location.objects.all()
         self.assertTrue(len(locations)>=1) 
 
+    def test_upd_loca(self):
+        loca = Location.objects.filter(id=1)
+        loca.update(location = 'USA')
+        search = Location.objects.filter(id=1)
+        self.assertNotEqual(search,'USA')
+
     def test_dele_loca(self):
         self.ahantu.save_loca()
         locations = Location.objects.all()
