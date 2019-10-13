@@ -15,7 +15,13 @@ This is a gallery app. It allows a admin to post pictures with  location and cat
 - Access the application through `http://127.0.0.1:8000/`
 
 ## BDD
-
+| BEHAVIOUR | INPUT | OUTPUT|
+|:------------|:--------|:-----------|
+|Admin wants to upload an image| They navigate to the admin route and upload the image along with its description,category and location.|Image is uploaded|
+|User wants to view all images with it description|click on the image |Image descri/location/category are displayed|
+|User wants to search for an image|enter category on search bar |all images that are in that category displayed|
+|User wants to view image by location|select location|all images in that location displayed|
+|User wants to view an image on it page|click on image,click on view pick button|the image displays|
 ## Known bugs
 No known errors if found drop a message on my profile
 
