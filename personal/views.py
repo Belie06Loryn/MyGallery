@@ -21,9 +21,7 @@ def search_results(request):
         return render(request, 'all-photos/search.html',{"backend":backend})
 
 def locators(request,id,loca_id):
-        found = Photos.filter_loca(id=id)
         laco = Photos.filter_loca(id=loca_id)
-        locate = Location.objects.all()
         return render(request,'all-photos/personal.html',{"location":found,"locate":locate,"laco":laco})
     
 
