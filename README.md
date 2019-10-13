@@ -4,10 +4,14 @@
 https://github.com/Belie06Loryn
 
 ## Description
+This is a gallery app. It allows a admin to post pictures with  location and category.Other users can view the images and search for images based on category, can view one image and also display images according to the location.
 ### Set-up and Installation
-- Clone the Repo using this command: cd git clone  [https://github.com/Belie06Loryn/MyGallery.git]
+- Clone the Repo using this command: cd git clone  [https://github.com/Belie06Loryn/MyGallery.git] $$ cd [MyGallery]
 - Install python 3.6
-- Run python3.6 mane.py runserver 
+- Install Python 3.6.5 2.Django 1.11
+- Create Environment [python3.6 -m venv --without-pip virtual] and activate   it [source virtual/bin/activate]
+- Run python3.6 manage.py test personal
+- Run python3.6 manage.py runserver 
 - Access the application through `http://127.0.0.1:8000/`
 
 ## BDD
@@ -21,7 +25,7 @@ Languages I have used:
 - Python 3.6
 - HTML
 - Bootstrap4
-- Django
+- Python 3.6.5 2.Django 1.11
 - CSS
 - Javascript
 
