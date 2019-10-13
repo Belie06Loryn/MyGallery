@@ -11,6 +11,10 @@
   }
 </script>
 <style>
+  .modal-content{
+    margin: auto;
+    display: block;
+  }
   .hr{ 
     display: block;
     margin-left:200px;
@@ -36,8 +40,8 @@
   {% for photos in imaje %}
   <div class="col-md-4">
     <div class="modal fade" id="{{photos.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 450px;height:770px; justify-items: center;">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
+      <div class="modal-dialog modal-lg" role="document" id="dialog">
+        <div class="modal-content vertical-align-center">
                 <img src="{{photos.image.url}}"  class="img-responsive" style="width: 433px;height:300px;">
                 <h3 class="text-center" >{{photos.name}}</h3>
                 <p style="margin: 10px;">{{photos.descri}}</p>
@@ -45,11 +49,11 @@
                 <p style="margin: 10px;">Location {{photos.loca}}</p>
                 <p style="margin: 10px;">Category {{photos.cate}}</p>
           <div class="modal-footer justify-content-center">
-            <a type="button" class="btn-floating btn-sm btn-fb"><i class="fab fa-facebook-f"></i></a>
-            <a type="button" class="btn-floating btn-sm btn-tw"><i class="fab fa-twitter"></i></a>
-            <a type="button" class="btn-floating btn-sm btn-gplus"><i class="fab fa-google-plus-g"></i></a>
-            <a type="button" class="btn-floating btn-sm btn-ins"><i class="fab fa-linkedin-in"></i></a>
-            <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal" href="">View The Picture</button>
+            <a type="button" class="btn-floating btn-sm btn-fb"><i class="fa fa-fw fa-facebook"></i></a>
+            <a type="button" class="btn-floating btn-sm btn-tw"><i class="fa fa-fw fa-twitter"></i></a>
+            <a type="button" class="btn-floating btn-sm btn-gplus"><i class="fa fa-fw fa-google-plus"></i></a>
+            <a type="button" class="btn-floating btn-sm btn-ins"><i class="fa fa-fw fa-linkedin"></i></a>
+            <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" href="">View The Picture</button>
             <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
           </div>
         </div>

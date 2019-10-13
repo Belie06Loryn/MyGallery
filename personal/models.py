@@ -47,7 +47,7 @@ class Photos(models.Model):
 
     @classmethod
     def image_by_id(cls,id):
-        found = cls.objects.filter(pk = id)
+        found = cls.objects.filter(id = id)
         return found
     
 

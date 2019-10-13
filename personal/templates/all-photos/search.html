@@ -1,49 +1,91 @@
 {%extends 'all-photos/base.html'%} 
 {% block content %}
-<div class="container">
-
-  <div class="row">
+<style>
+.hr{ 
+    display: block;
+    margin-left:200px;
+    margin-right: 200px;
+    border-style: inset;
+    border-width: 1px;
+  } 
+  footer {
+    /* position: fixed; */
+    background-color:transparent;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color:rgb(8, 8, 8);
+    text-align: center;
+    font-size: 10px;
+  }
+</style>
+<script>
+    function copylk() {
+      var Text = document.getElementById("link");
+      Text.select();
+      console.log(Text);
+      Text.setSelectionRange(0, 99999)
+      document.execCommand("copy");
+    }
+  </script>
+<div class="container" style="background-color:rgba(14, 255, 175, 0.2);"><br>
     {% if category %}
       <h2> {{ category|length }}  {{backend}}</h2>
     {% else %}
       <h2> {{backend}}</h2>
-    {% endif %}
-
-  </div>
-
-<div class="container">
+    {% endif %}<br><br>
     {% if category %}
     {% for cate in category %}
     <div class="row">
-      <div class="col-sm-6 col-md-3">
-            <div class="col-lg-4 col-md-6 mb-4">
-            <div class="modal fade" id="{{cate.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                        <img src="{{cate.image.url}}"  class="img-responsive" style="width: 250px;height:250px;">
-                        <h3 class="text-center">{{cate.name}}</h3>
-                        <p>{{cate.descri}}</p>
-                        <p>Posted at {{cate.pub_date|timesince}}</p>
-                        <p>Location {{cate.loca}}</p>
-                        <p>Category {{cate.cate}}</p>
-                    <div class="modal-footer justify-content-center">
-                    <a type="button" class="btn-floating btn-sm btn-fb"><i class="fab fa-facebook-f"></i></a>
-                    <a type="button" class="btn-floating btn-sm btn-tw"><i class="fab fa-twitter"></i></a>
-                    <a type="button" class="btn-floating btn-sm btn-gplus"><i class="fab fa-google-plus-g"></i></a>
-                    <a type="button" class="btn-floating btn-sm btn-ins"><i class="fab fa-linkedin-in"></i></a>
-                    <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">View The Picture</button>
-                    <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                </div>
+      <div class="col-md-4">
+        <div class="modal fade" id="{{cate.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 450px;height:770px; justify-items: center;">
+          <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <img src="{{cate.image.url}}"  class="img-responsive" style="width: 433px;height:300px;">
+            <h3 class="text-center">{{cate.name}}</h3>
+            <p style="margin: 10px;">{{cate.descri}}</p>
+            <p style="margin: 10px;">Posted at {{cate.pub_date|timesince}}</p>
+            <p style="margin: 10px;">Location {{cate.loca}}</p>
+            <p style="margin: 10px;">Category {{cate.cate}}</p>
+            <div class="modal-footer justify-content-center">
+            <a type="button" class="btn-floating btn-sm btn-fb"><i class="fa fa-fw fa-facebook"></i></a>
+            <a type="button" class="btn-floating btn-sm btn-tw"><i class="fa fa-fw fa-twitter"></i></a>
+            <a type="button" class="btn-floating btn-sm btn-gplus"><i class="fa fa-fw fa-google-plus"></i></a>
+            <a type="button" class="btn-floating btn-sm btn-ins"><i class="fa fa-fw fa-linkedin"></i></a>
+            <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">View The Picture</button>
+            <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
             </div>
-            </div>
-            <a><img class="img-responsive" src="{{cate.image.url}}" id="image"
-                data-toggle="modal" data-target="#{{cate.id}}"></a>
+          </div>
+          </div>
         </div>
+        <a><img class="img-responsive" src="{{cate.image.url}}" id="image"
+            data-toggle="modal" data-target="#{{cate.id}}" style="width: 250px;height:250px;"></a>
+        <button class="btn btn-default" style="text-align:center;" onclick="copylk(link)" data-toggle="modal"
+        data-target="#Modal">Copy Link</button>
+        <input type="text" value="127.0.0.1:8000{{photos.image.url}}" id="link" >
+        </div>
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notify modal-success" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="text-center">
+                    <i class="fas fa-check fa-4x mb-3 animated rotateIn" data-delay="1s" style="color:rgb(241, 106, 196)"></i>
+                    <p class="text-muted">Link Successfully Copied</p>
+                  </div>
+                  <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+  </div>
     </div>
     {% endfor %}
     {% endif %}
+</div></div><br><br><br><br><br>
+<div>
+    <footer>
+        <hr class="hr">
+        <p>@2019 by ____ProDevloper.Proudly Created</p>
+    </footer>
 </div>
-  
 {% endblock %} 

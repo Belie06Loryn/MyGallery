@@ -27,11 +27,10 @@ def locators(request,id,loca_id):
         return render(request,'all-photos/personal.html',{"location":found,"locate":locate,"laco":laco})
     
 
-def image(request,id):
+def image_id(request,id):
     try:
         single= Photos.objects.get(id = id)
     except DoesNotExist:
         raise Http404()
-    namu=f'{single.name}'
     
-    return render(request,"all-photos/pick-posts.html", {"namu":namu,"photos":single})
+    return render(request,"all-photos/pick-posts.html", {"photos":single.id})
