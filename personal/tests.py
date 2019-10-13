@@ -10,18 +10,22 @@ class LocationTestClass(TestCase):
 
     # Testing  instance
     def test_instance(self):
-        self.assertTrue(isinstance(self.ahantu,Location))    
+        self.assertTrue(isinstance(self.ahantu,Location)) 
 
-    # Testing Save Method
-    def test_save_method(self):
+    def tearDown(self):
+        Location.objects.all().delete()
+
+    def test_save_loca(self):
+        self.ahantu.save_loca()
+        locations= Location.objects.all()
+        self.assertTrue(len(locations)>=1) 
+
+    def test_dele_loca(self):
         self.ahantu.save_loca()
         locations = Location.objects.all()
-        self.assertTrue(len(locations.location) > 0) 
+        self.assertTrue(len(locations)>=0)              
 
-    def test_dele(self):
-        self.ahantu.save_loca()
-        locate = Location.objects.filter(location=ahantu).dele_loca()
-        self.assertEqual(len(locate.location),1)       
+         
 
 class CategoryTestClass(TestCase):
 
@@ -37,27 +41,53 @@ class CategoryTestClass(TestCase):
     def test_save_method(self):
         self.categ.save_cate()
         categories = Category.objects.all()
-        self.assertTrue(len(categories) > 0)          
+        self.assertTrue(len(categories) >= 1)  
+
+    def test_del_cate(self):
+        self.categ.save_cate()
+        categories = self.categ.dele_cate()
+        categ = Category.objects.all()
+        self.assertTrue(len(categ)<=0)
+
+    def tearDown(self):
+        Category.objects.all().delete()                
 
 class PhotosTestClass(TestCase):
 
     def setUp(self):
         # Creating a new Location and saving it
         self.ahantu= Location(location='Rwanda')
-        self.ahantu.save_location()
+        self.ahantu.save_loca()
 
         # Creating a new category and saving it
-        self.new_cate = Category(name = 'Fun')
+        self.new_cate = Category(cate = 'Fun')
         self.new_cate.save_cate()
 
-        self.new_photos= Photos(image = 'Jam.jpeg', name ='Muriuki', descri ='jamesmoringaschoolcom',loca = self.location, cate=self.category,pub_date = '2019-09-29')
+        self.new_photos= Photos(image = 'Jam.jpeg', name ='Muriuki', descri ='jamesmoringaschoolcom',loca = self.ahantu, cate=self.new_cate,pub_date = '2019-09-29')
         self.new_photos.save_pic()
-
-        self.new_photos.Category.add(self.new_cate)
 
     def tearDown(self):
         Location.objects.all().delete()
         Category.objects.all().delete()
         Photos.objects.all().delete()       
 
+    def test_save_pick(self):
+        self.new_photos= Photos(image = 'Jam.jpeg', name ='Muriuki', descri ='jamesmoringaschoolcom',loca = self.ahantu, cate=self.new_cate,pub_date = '2019-09-29')
+        self.new_photos.save_pic()
+        picture = Photos.objects.all()
+        self.assertTrue(len(picture)>=1)
+
+    def test_dele_pick(self):
+        self.new_photos= Photos(image = 'Jam.jpeg', name ='Muriuki', descri ='jamesmoringaschoolcom',loca = self.ahantu, cate=self.new_cate,pub_date = '2019-09-29')
+        self.new_photos.save_pic()
+        picture = self.new_photos.dele_pic()
+        delete = Photos.objects.all()
+        self.assertTrue(len(delete)>=0)   
+
+    def test_upd_pic(self):
+        image = Photos.objects.filter(id=1)
+        image.update(name ='lez.jpeg')
+        search = Photos.objects.filter(id=1)
+        self.assertNotEqual(search,'lez.jpeg')     
         
+      
