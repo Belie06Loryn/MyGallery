@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .models import Location,Photos,Category
 import datetime as dt
- 
+# Testing Location Class 
 class LocationTestClass(TestCase):
 
     # Set up method
@@ -30,9 +30,8 @@ class LocationTestClass(TestCase):
         self.ahantu.save_loca()
         locations = Location.objects.all()
         self.assertTrue(len(locations)>=0)              
-
-         
-
+        
+# Testing Category Class  
 class CategoryTestClass(TestCase):
 
     # Set up method
@@ -63,6 +62,8 @@ class CategoryTestClass(TestCase):
 
     def tearDown(self):
         Category.objects.all().delete()                
+
+#  Testing Photos Class
 
 class PhotosTestClass(TestCase):
 
